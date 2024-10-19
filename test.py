@@ -9,3 +9,4 @@ def test_weather(self):
 
 if '__name__' == 'weather.py__':
     unittest.weather()
+
