@@ -46,7 +46,7 @@ class WeatherData(Base):
         self.longitude = longitude
         self.month = month
         self.day = day
-        self.year = year 
+        self.year = year
         self.five_year_avg_temp = five_year_avg_temp
         self.five_year_min_temp = five_year_min_temp
         self.five_year_max_temp = five_year_max_temp
@@ -69,18 +69,18 @@ def setup_database(db_url='sqlite:///weather_data.db'):
     return Session()
 session = setup_database()
 
-# session = Session()
-# weather_data_entry = Weather(
-#         latitude=Weather(latitude)
-#         longitude=Weather.longitude,
-#         month=Weather(month),
-#         day=Weather(day),
-#         year=Weather(year),
-#         five_year_avg_temp=avg_temp,
-#         five_year_max_wind=max_wind,
-#         five_year_sum_precip=avg_precip,
-#         # Set other fields to None or appropriate values as needed
-#     )
+
+weather_data_entry = Weather(
+        latitude=Weather(latitude),
+        longitude=Weather.longitude,
+        month=Weather(month),
+        day=Weather(day),
+        year=Weather(year),
+        five_year_avg_temp=avg_temp,
+        five_year_max_wind=max_wind,
+        five_year_sum_precip=avg_precip,
+        # Set other fields to None or appropriate values as needed
+    )
 
 
 
