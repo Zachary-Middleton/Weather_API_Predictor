@@ -27,20 +27,20 @@ Base = sqlalchemy.orm.declarative_base()
 class WeatherData(Base):
     __tablename__ = 'weather_data'
     id = Column(Integer, primary_key=True)
-    latitude = Column(Float, nullable= False)
-    longitude = Column(Float,nullable= False)
-    month = Column(Integer, nullable= False)
-    day = Column(Integer, nullable= False)
-    year = Column(Integer, nullable= False)
-    five_year_avg_temp = Column(Float, nullable= True)
-    five_year_min_temp = Column(Float, nullable= True)
-    five_year_max_temp = Column(Float, nullable= True)
-    five_year_avg_wind = Column(Float, nullable= True)
-    five_year_min_wind = Column(Float, nullable= True)
-    five_year_max_wind = Column(Float, nullable= True)
-    five_year_sum_precip = Column(Float, nullable= True)
-    five_year_min_precip = Column(Float, nullable= True)
-    five_year_max_precip = Column(Float, nullable= True)
+    latitude = Column(Float, nullable=False)
+    longitude = Column(Float, nullable=False)
+    month = Column(Integer, nullable=False)
+    day = Column(Integer, nullable=False)
+    year = Column(Integer, nullable=False)
+    five_year_avg_temp = Column(Float, nullable=True)
+    five_year_min_temp = Column(Float, nullable=True)
+    five_year_max_temp = Column(Float, nullable=True)
+    five_year_avg_wind = Column(Float, nullable=True)
+    five_year_min_wind = Column(Float, nullable=True)
+    five_year_max_wind = Column(Float, nullable=True)
+    five_year_sum_precip = Column(Float, nullable=True)
+    five_year_min_precip = Column(Float, nullable=True)
+    five_year_max_precip = Column(Float, nullable=True)
 
     def __repr__(self):
         return (f"<WeatherData(latitude={self.latitude}, longitude={self.longitude}, month={self.month}, "
@@ -57,3 +57,7 @@ def setup_database(db_url='sqlite:///weather_data.db'):
     Base.metadata.create_all(engine)  # Create all tables in the engine
     Session = sessionmaker(bind=engine)
     return Session()
+
+# Call the setup_database function
+if __name__ == "__main__":
+    setup_database()
