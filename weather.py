@@ -32,17 +32,24 @@ class Weather:
 
     # Define fetch_weather_data as part of the Weather class
     def fetch_weather_data(self, year, month, day):
-        url = (
-            f"https://archive-api.open-meteo.com/v1/archive?"
-            f"latitude={self.latitude}&longitude={self.longitude}"
-            f"&start_date={year}-{month:02d}-{day:02d}"
-            f"&end_date={year}-{month:02d}-{day:02d}"
-            f"&daily=temperature_2m_mean,precipitation_sum,wind_speed_10m_max"
-            f"&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch"
-            f"&timezone=America%2FChicago"
-        )
+        url = "https://archive-api.open-meteo.com/v1/archive"
+        # Ensure the date is formatted correctly
+        date_str = f"{year}-{month:02d}-{day:02d}"
 
-        response = requests.get(url)
+        params = {
+            "latitude": 38.8339,
+            "longitude": -104.8214,
+            "start_date": date_str,
+            "end_date": date_str,
+            "daily": ["temperature_2m_mean", "wind_speed_10m_max", "precipitation_sum"],
+            "temperature_unit": "fahrenheit",
+            "wind_speed_unit": "mph",
+            "precipitation_unit": "inch",
+            "timezone": "America/Chicago"
+        }
+
+        # Use the correct function to send the request
+        response = requests.get(url, params=params)
 
         if response.status_code == 200:
             data = response.json()
@@ -52,7 +59,7 @@ class Weather:
             return None
 
 weather = Weather(38.8339, -104.8214, 9, 30, 2024)
-data = weather.fetch_weather_data(2024, 9, 30)
+data = weather.fetch_weather_data(2022, 9, 30)
 print(data)
 
 #
