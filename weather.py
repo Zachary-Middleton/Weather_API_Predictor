@@ -1,15 +1,4 @@
 
-import openmeteo_requests
-import requests
-
-import requests_cache
-from retry_requests import retry
-
-from sqlalchemy import create_engine, Column, Float, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-import sqlalchemy
-
 import requests
 
 
@@ -86,50 +75,3 @@ class Weather:
             self.five_year_avg_precip = sum(precipitation)
             return self.five_year_avg_precip
 
-
-# Instantiate the Weather class outside the class definition
-# Fetch and print temperature, wind, and precipitation data
-
-
-
-
-
-# Base = sqlalchemy.orm.declarative_base()
-#
-# class WeatherData(Base):
-#     __tablename__ = 'weather_data'
-#     id = Column(Integer, primary_key=True)
-#     latitude = Column(Float, nullable= False)
-#     longitude = Column(Float,nullable= False)
-#     month = Column(Integer, nullable= False)
-#     day = Column(Integer, nullable= False)
-#     year = Column(Integer, nullable= False)
-#     five_year_avg_temp = Column(Float, nullable= True)
-#     five_year_min_temp = Column(Float, nullable= True)
-#     five_year_max_temp = Column(Float, nullable= True)
-#     five_year_avg_wind = Column(Float, nullable= True)
-#     five_year_min_wind = Column(Float, nullable= True)
-#     five_year_max_wind = Column(Float, nullable= True)
-#     five_year_sum_precip = Column(Float, nullable= True)
-#     five_year_min_precip = Column(Float, nullable= True)
-#     five_year_max_precip = Column(Float, nullable= True)
-#
-#     def __repr__(self):
-#         return (f"<WeatherData(latitude={self.latitude}, longitude={self.longitude}, month={self.month}, "
-#                 f"day={self.day}, year={self.year}, "
-#                 f"five_year_avg_temp={self.five_year_avg_temp}, five_year_min_temp={self.five_year_min_temp}, "
-#                 f"five_year_max_temp={self.five_year_max_temp}, five_year_avg_wind={self.five_year_avg_wind}, "
-#                 f"five_year_min_wind={self.five_year_min_wind}, five_year_max_wind={self.five_year_max_wind}, "
-#                 f"five_year_sum_precip={self.five_year_sum_precip}, five_year_min_precip={self.five_year_min_precip}, "
-#                 f"five_year_max_precip={self.five_year_max_precip})>")
-#
-# # Database setup
-# def setup_database(db_url='sqlite:///weather_data.db'):
-#     engine = create_engine(db_url)
-#     Base.metadata.create_all(engine)  # Create all tables in the engine
-#     Session = sessionmaker(bind=engine)
-#     return Session()
-#
-# # Example usage
-# if __name__ == '__main__':
-#     session = setup_database()
