@@ -96,9 +96,9 @@ avg_temp = weather.temp_data()
 max_wind = weather.wind_data()
 avg_precip = weather.precip_data()
 
-print(f"5-Year Average Temperature: {avg_temp}°F")
-print(f"5-Year Max Wind Speed: {max_wind} mph")
-print(f"5-Year Total Precipitation: {avg_precip} inches")
+print(f"5-Year Average Temperature: {avg_temp:.2f}°F")
+print(f"5-Year Max Wind Speed: {max_wind:.2f} mph")
+print(f"5-Year Total Precipitation: {avg_precip:.2f} inches")
 
 
 
