@@ -37,8 +37,8 @@ class Weather:
         date_str = f"{year}-{month:02d}-{day:02d}"
 
         params = {
-            "latitude": 38.8339,
-            "longitude": -104.8214,
+            "latitude": self.latitude,
+            "longitude": self.longitude,
             "start_date": date_str,
             "end_date": date_str,
             "daily": ["temperature_2m_mean", "wind_speed_10m_max", "precipitation_sum"],
@@ -53,16 +53,20 @@ class Weather:
 
         if response.status_code == 200:
             data = response.json()
-            return data
+
+            # Extract temperature data
+            temperature = data["daily"]["temperature_2m_mean"][0]
+            return temperature  # Return only the temperature
         else:
             print("Failed to retrieve data")
             return None
 
+# Instantiate the Weather class outside the class definition
 weather = Weather(38.8339, -104.8214, 9, 30, 2024)
-data = weather.fetch_weather_data(2022, 9, 30)
-print(data)
 
-#
+# Fetch data for a specific date and print the temperature
+temperature = weather.fetch_weather_data(2022, 9, 30)
+print(f"Temperature on 2022-09-30: {temperature}°F")
 # # Setup the Open-Meteo API client with cache and retry on error
 # cache_session = requests_cache.CachedSession('.cache', expire_after = -1)
 # retry_session = retry(cache_session, retries = 5, backoff_factor = 0.2)
