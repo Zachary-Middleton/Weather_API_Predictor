@@ -53,20 +53,49 @@ class Weather:
 
         if response.status_code == 200:
             data = response.json()
-
-            # Extract temperature data
-            temperature = data["daily"]["temperature_2m_mean"][0]
-            return temperature  # Return only the temperature
+            return data["daily"]  # Return only the temperature
         else:
             print("Failed to retrieve data")
             return None
+
+
+
+    def temp_data(self):
+        temperature = []
+        for past_year in range(self.year -5, self.year):
+            data = self.fetch_weather_data(past_year, self.month, self)
+            if data:
+                temperature.append(data["temperature_2m_mean"])
+        if temperatures:
+            self.five_year_avg_temp = sum(temperatures) / len(temperatures)
+            return self.five_year_avg_temp
+
+    def wind_data(self):
+        wind_speed = []
+        for past_year in range(self.year -5, self.year):
+            data = self.fetch_weather_data(past_year, self)
+            if data:
+                wind_speed.append("wind_speed_10m_max")
+        if wind_speed:
+            self.five_year_avg_wind = max(wind_speed)
+            return five_year_avg_wind
+    def precip_data(self):
+        precipitation = []
+        for past_year in range(self.year -5, self.year):
+            data = self.fetch_weather_data(past_year, self)
+            if data:
+                precipitation.append("precipitation_sum")
+        if precipitation:
+            self.five_year_avg_precip = sum(precipitation)
+            return precipitation
+
 
 # Instantiate the Weather class outside the class definition
 weather = Weather(38.8339, -104.8214, 9, 30, 2024)
 
 # Fetch data for a specific date and print the temperature
-temperature = weather.fetch_weather_data(2022, 9, 30)
-print(f"Temperature on 2022-09-30: {temperature}°F")
+weather_init = weather.fetch_weather_data(2022, 9, 30)
+print(f"Temperature on 2022-09-30: {five_year_avg_wind}, {precipitation}°F")
 # # Setup the Open-Meteo API client with cache and retry on error
 # cache_session = requests_cache.CachedSession('.cache', expire_after = -1)
 # retry_session = retry(cache_session, retries = 5, backoff_factor = 0.2)
