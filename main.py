@@ -12,7 +12,7 @@ def main():
     avg_precip = weather.precip_data()
 
     # Print the results
-    print(f"5-Year Average Temperature: {avg_temp:.2f}°F")S
+    print(f"5-Year Average Temperature: {avg_temp:.2f}°F")
     print(f"5-Year Max Wind Speed: {max_wind:.2f} mph")
     print(f"5-Year Total Precipitation: {avg_precip:.2f} inches")
 
