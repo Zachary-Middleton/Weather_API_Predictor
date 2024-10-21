@@ -7,10 +7,10 @@ class TestWeather(unittest.TestCase):
 
     def test_initial_latitude(self):
         # Create an instance of the Weather class
-        weather_latidude = Weather(38.8339, -104.8214, 9, 30, 2024)
+        weather_latitude = Weather(38.8339, -104.8214, 9, 30, 2024)
 
         # Assert that the latitude is set correctly
-        self.assertEqual(weather_latidude.latitude, 38.8339)
+        self.assertEqual(weather_latitude.latitude, 38.8339)
 
     def test_initial_longitude(self):
         weather_longitude = Weather(38.8339, -104.8214, 9, 30, 2024)
