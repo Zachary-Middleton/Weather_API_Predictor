@@ -68,17 +68,8 @@ import sqlalchemy
 #     Base.metadata.create_all(engine)  # Create all tables in the engine
 #     Session = sessionmaker(bind=engine)
 #     return Session()
-def get_past_date(self):
-    start_date = datetime(self.year, self.month, self.day)
-    past_dates = []
 
-    for i in range(1,6):
-        past_date = start_date.replace(year = start_date.year - i)
-        past_dates.append(past_date)
-        return past_dates
-weather = Weather(38.8339, -104.8214, 9, 30, 2024)
 
-print(weather.get_past_dates())
 # session = setup_database()
 # weather = Weather(38.8339, -104.8214, 9, 30, 2024)
 # insert_weather_data = WeatherData(latitude= weather.latitude, longitude= weather.longitude, month= weather.month, day= weather.day, year = weather.year, five_year_avg_temp= weather.five_year_avg_temp)
