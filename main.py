@@ -53,9 +53,9 @@ temperatures = [temperature_data2020, temperature_data2021, temperature_data2022
 wind = [wind_data2020, wind_data2021,wind_data2022,wind_data2023,wind_data2024]
 precipitation = [pricip_data2020, pricip_data2021,pricip_data2022,pricip_data2023,pricip_data2024]
 
-print(avg_temp(temperatures))
-print(max_wind(wind))
-print(precip_sum(precipitation))
+# print(avg_temp(temperatures))
+# print(max_wind(wind))
+# print(precip_sum(precipitation))
 #
 # Base = sqlalchemy.orm.declarative_base()
 #
@@ -107,20 +107,18 @@ print(precip_sum(precipitation))
 #     return Session()
 #
 # session = setup_database()
-# weather = Weather(38.8339, -104.8214, 9, 30, 2024)
-# values_temp = list(temperature_data.values())
-# values_wind = list(wind_data.values())
-# values_precip = list(precip_data.values())
-# precipitation_sum = precip_sum(precip_data)
-# average_temp = avg_temp(temperature_data)
-# maximum_wind = max_wind(wind_data)
-# max_temp = float(max(values_temp))
-# min_temp = float(min(values_temp))
-# min_wind = float(min(values_wind))
-# avg_wind = float(sum(values_wind) / len(values_wind))
-# sum_precip = float(sum(values_precip))
-# min_precip = float(min(values_precip))
-# max_precip = float(max(values_precip))
+
+average_temp = avg_temp(temperatures)
+max_temp = max(temperatures)
+min_temp = min(temperatures)
+min_wind = min(wind)
+avg_wind =  sum(wind) / len(wind)
+maximum_wind = max_wind(wind)
+sum_precip = precip_sum(precipitation)
+min_precip = min(precipitation)
+max_precip = max(precipitation)
+
+print(maximum_wind)
 #
 # new_entry = WeatherData(
 #     latitude=weather.latitude,
