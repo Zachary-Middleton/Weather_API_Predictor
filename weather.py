@@ -1,4 +1,3 @@
-import pandas as pd
 import requests
 
 
@@ -45,26 +44,21 @@ class Weather:
             print("Failed to retrieve data")
             return None
     def temp_data(self):
-        temperatures = {}
-        for year in range(self.year, self.year - 5, -1):
-            data = self.fetch_weather_data(year, self.month, self.day)
-            if data and "temperature_2m_mean" in data:
-                mean_temperature = data["temperature_2m_mean"][0]  # First element if list format
-                temperatures[year] = mean_temperature
-        return temperatures
+        temperatures = []
+        data = self.fetch_weather_data(self.year, self.month, self.day)
+        if data and "temperature_2m_mean" in data:
+            mean_temperature = data["temperature_2m_mean"][0]  # Access first element if it's a list
+            return mean_temperature
     def wind_data(self):
-        wind = {}
-        for year in range(self.year, self.year - 5, -1):
-            data = self.fetch_weather_data(year, self.month, self.day)
-            if data and "wind_speed_10m_max" in data:
-                max_wind = data["wind_speed_10m_max"][0]  # First element if list format
-                wind[year] = max_wind
-        return wind
+        wind = []
+        data = self.fetch_weather_data(self.year, self.month, self.day)
+        if data and "wind_speed_10m_max" in data:
+            wind_max = data["wind_speed_10m_max"][0]  # Access first element if it's a list
+            return wind_max
+
     def precip_data(self):
-        precip = {}
-        for year in range(self.year, self.year - 5, -1):
-            data = self.fetch_weather_data(year, self.month, self.day)
-            if data and "precipitation_sum" in data:
-                sum_precip = data["precipitation_sum"][0]  # First element if list format
-                precip[year] = sum_precip
-        return precip
+        pricip = []
+        data = self.fetch_weather_data(self.year, self.month, self.day)
+        if data and "precipitation_sum" in data:
+            precip_sum = data["precipitation_sum"][0]  # Access first element if it's a list
+            return precip_sum
