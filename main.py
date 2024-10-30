@@ -118,14 +118,15 @@ sum_precip = precip_sum(precipitation)
 min_precip = min(precipitation)
 max_precip = max(precipitation)
 
-print(maximum_wind)
-#
-# new_entry = WeatherData(
-#     latitude=weather.latitude,
-#     longitude=weather.longitude,
-#     month=weather.month,
-#     day = weather.day,
-#     year = weather.year,
+# print(maximum_wind)
+
+entry_2024 = WeatherData(
+    latitude=weather.latitude,
+    longitude=weather.longitude,
+    month=9,
+    day = 30,
+    year = 2024,
+
 #     five_year_avg_temp = average_temp,
 #     five_year_min_temp =  min_temp,
 #     five_year_max_temp = max_temp,
@@ -136,5 +137,5 @@ print(maximum_wind)
 #     five_year_min_precip = min_precip,
 #     five_year_max_precip = max_precip,
 # )
-# session.add(new_entry)
-# session.commit()
+session.add(entry_2024)
+session.commit()
