@@ -68,9 +68,3 @@ class Weather:
                 sum_precip = data["precipitation_sum"][0]  # First element if list format
                 precip[year] = sum_precip
         return precip
-
-weather = Weather(38.8339, -104.8214, 9, 30, 2024)
-temperatures = weather.temp_data()
-wind = weather.wind_data()
-precip = weather.precip_data()
-print(precip)
