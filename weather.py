@@ -45,41 +45,32 @@ class Weather:
             print("Failed to retrieve data")
             return None
     def temp_data(self):
-        temperature = []
-        data = self.fetch_weather_data(self.year, self.month, self)
-        if data:
-            temperature.append(data)
-            print(data)
+        temperatures = {}
+        for year in range(self.year, self.year - 5, -1):
+            data = self.fetch_weather_data(year, self.month, self.day)
+            if data and "temperature_2m_mean" in data:
+                mean_temperature = data["temperature_2m_mean"][0]  # First element if list format
+                temperatures[year] = mean_temperature
+        return temperatures
+    def wind_data(self):
+        wind = {}
+        for year in range(self.year, self.year - 5, -1):
+            data = self.fetch_weather_data(year, self.month, self.day)
+            if data and "wind_speed_10m_max" in data:
+                max_wind = data["wind_speed_10m_max"][0]  # First element if list format
+                wind[year] = max_wind
+        return wind
+    def precip_data(self):
+        precip = {}
+        for year in range(self.year, self.year - 5, -1):
+            data = self.fetch_weather_data(year, self.month, self.day)
+            if data and "precipitation_sum" in data:
+                sum_precip = data["precipitation_sum"][0]  # First element if list format
+                precip[year] = sum_precip
+        return precip
 
 weather = Weather(38.8339, -104.8214, 9, 30, 2024)
-weather.temp_data()
-    #
-    # def temp_data(self):
-    #     temperature = []
-    #     for past_year in range(self.year -5, self.year):
-    #         data = self.fetch_weather_data(past_year, self.month, self.day)
-    #         if data:
-    #             temperature.append(data["temperature_2m_mean"][0])
-    #     if temperature:
-    #         self.five_year_avg_temp = sum(temperature) / len(temperature)
-    #         return self.five_year_avg_temp
-    #
-    # def wind_data(self):
-    #     wind_speed = []
-    #     for past_year in range(self.year -5, self.year):
-    #         data = self.fetch_weather_data(past_year, self.month, self.day)
-    #         if data:
-    #             wind_speed.append(data["wind_speed_10m_max"][0])
-    #     if wind_speed:
-    #         self.five_year_max_wind = max(wind_speed)
-    #         return self.five_year_max_wind
-    # def precip_data(self):
-    #     precipitation = []
-    #     for past_year in range(self.year -5, self.year):
-    #         data = self.fetch_weather_data(past_year, self.month, self.day)
-    #         if data:
-    #             precipitation.append(data["precipitation_sum"][0])
-    #     if precipitation:
-    #         self.five_year_avg_precip = sum(precipitation)
-    #         return self.five_year_avg_precip
-
+temperatures = weather.temp_data()
+wind = weather.wind_data()
+precip = weather.precip_data()
+print(precip)
