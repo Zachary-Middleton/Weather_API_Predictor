@@ -15,11 +15,14 @@ def avg_temp(temperature_data):
 def max_wind(wind_data):
     maximum_wind = max(wind_data.values())
     return maximum_wind
+def precip_sum(precip_data):
+    precipitation_sum = sum(precip_data.values())
+    return precipitation_sum
 
+precipitation_avg = avg_temp(precip_data)
 average_temp = avg_temp(temperature_data)
 maximum_wind = max_wind(wind_data)
 
-print(maximum_wind)
 
 # wind = weather.wind_data()
 # precip = weather.precip_data()

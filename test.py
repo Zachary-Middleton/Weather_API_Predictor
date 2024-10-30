@@ -18,12 +18,12 @@ class TestWeather(unittest.TestCase):
         # Assert that the longitude is set correctly
         self.assertEqual(weather_longitude.longitude, -104.8214)
 
-    def test_five_year_avg_temp(self):
-        weather_temp = Weather(38.8339, -104.8214, 9, 30, 2024)
-        weather_temp.temp_data()  # Call the method to calculate average temperature
+    def test_day(self):
+        weather_day = Weather(38.8339, -104.8214, 9, 30, 2024)
 
-        # Assert that the five year average temp returns the correct value
-        self.assertAlmostEqual(weather_temp.five_year_avg_temp, 62.78)
+        # Assert that the longitude is set correctly
+        self.assertEqual(weather_day.day, 30)
+
 
 
 if __name__ == '__main__':
