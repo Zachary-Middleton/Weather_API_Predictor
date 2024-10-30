@@ -5,43 +5,42 @@ from sqlalchemy.orm import sessionmaker
 import sqlalchemy
 
 
-def avg_temp(temperatures):
+def avg_temp():
     temp_2024= weather2024.temp_data()
     temp_2023= weather2023.temp_data()
     temp_2022= weather2022.temp_data()
     temp_2021= weather2021.temp_data()
     temp_2020= weather2020.temp_data()
-    sum = temp_2024 + temp_2023 + temp_2022 + temp_2021 + temp_2020
-    avg_temperature= sum/len(temperatures)
+    temperatures = [temp_2024, temp_2023, temp_2022, temp_2021, temp_2020]
+    avg_temperature = sum(temperatures) / len(temperatures)
     min_temp = min(temperatures)
     max_temp = max(temperatures)
     return avg_temperature, min_temp, max_temp
-def max_wind(wind):
+def max_wind():
     wind_2024= weather2024.wind_data()
     wind_2023= weather2023.wind_data()
     wind_2022= weather2022.wind_data()
     wind_2021= weather2021.wind_data()
     wind_2020= weather2020.wind_data()
-    sum = wind_2024 + wind_2023 + wind_2022 + wind_2021 + wind_2020
-    avg_wind = sum/len(wind)
-    min_wind = min(wind)
-    max_wind = max(wind)
+    winds = [wind_2024, wind_2023, wind_2022, wind_2021, wind_2020]
+    avg_wind = sum(winds) / len(winds)
+    min_wind = min(winds)
+    max_wind = max(winds)
+#
     return avg_wind, min_wind, max_wind
-def sum_precip(precipitation):
-    precipitation_2024= weather2024.precipitation_data()
-    precipitation_2023= weather2023.precipitation_data()
-    precipitation_2022= weather2022.precipitation_data()
-    precipitation_2021= weather2021.precipitation_data()
-    precipitation_2020= weather2020.precipitation_data()
-    sum = precipitation_2024 + precipitation_2023 + precipitation_2022 + precipitation_2021 + precipitation_2020
-    avg_precip= sum/len(precipitation)
-    min_precip = min(precipitation)
-    max_precip = max(precipitation)
+def sum_precip():
+    precipitation_2024= weather2024.precip_data()
+    precipitation_2023= weather2023.precip_data()
+    precipitation_2022= weather2022.precip_data()
+    precipitation_2021= weather2021.precip_data()
+    precipitation_2020= weather2020.precip_data()
+    precipitations = [precipitation_2024, precipitation_2023, precipitation_2022, precipitation_2021,precipitation_2020]
+    avg_precip = sum(precipitations) / len(precipitations)
+    min_precip = min(precipitations)
+    max_precip = max(precipitations)
+
     return avg_precip, min_precip, max_precip
 
-temperatures = weather.temp_data()
-wind = weather.wind_data()
-precipitations = weather.precip_data
 
 weather2024 = Weather(38.8339, -104.8214, 9, 30, 2024)
 weather2023 = Weather(38.8339, -104.8214, 9, 30, 2023)
@@ -50,8 +49,33 @@ weather2021 = Weather(38.8339, -104.8214, 9, 30, 2021)
 weather2020 = Weather(38.8339, -104.8214, 9, 30, 2020)
 
 
-average_temp = avg_temp(temperatures)
-# max_temp = max(temperatures)
+average_temperature, min_temp, max_temp = avg_temp()
+avg_wind, min_wind, max_wind = max_wind()
+avg_precip, min_precip, max_precip = sum_precip()
+
+
+print(f"Average Temperature: {average_temperature}")
+print(f"Minimum Temperature: {min_temp}")
+print(f"Maximum Temperature: {max_temp}")
+print(f"Average Wind: {avg_wind}")
+print(f"Minimum Wind: {min_wind}")
+print(f"Maximum Wind: {max_wind}")
+print(f"Average Precip: {avg_precip}")
+print(f"Minimum Precip: {min_precip}")
+print(f"Maximum Precip: {max_precip}")
+# temperature = weather.temp_data()
+# wind= weather.wind_data()
+# precip= weather.precip_data()
+#
+# average_temperature, min_temp, max_temp = avg_temp()
+# average_wind, min_wind, max_wind = max_wind()
+# average_precip, min_precip, max_precip = sum_precip()
+#
+#
+#
+# _,max_wind,_ = max_wind(wind)
+# print(max_wind)
+# # max_temp = max(temperatures)
 # min_temp = min(temperatures)
 # min_wind = min(wind)
 # avg_wind =  sum(wind) / len(wind)
