@@ -117,17 +117,6 @@ def setup_database(db_url='sqlite:///weather_data.db'):
 
 # session = setup_database()
 
-average_temp = avg_temp(temperatures)
-max_temp = max(temperatures)
-min_temp = min(temperatures)
-min_wind = min(wind)
-avg_wind =  sum(wind) / len(wind)
-maximum_wind = max_wind(wind)
-sum_precip = precip_sum(precipitation)
-min_precip = min(precipitation)
-max_precip = max(precipitation)
-
-# print(maximum_wind)
 
 entry_2024 = WeatherData(
     latitude=weather.latitude,
@@ -135,7 +124,6 @@ entry_2024 = WeatherData(
     month=9,
     day = 30,
     year = 2024,
-
     five_year_avg_temp = average_temp,
     five_year_min_temp =  min_temp,
     five_year_max_temp = max_temp,
