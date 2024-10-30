@@ -1,4 +1,4 @@
-
+import weather
 from weather import Weather  # Make sure this matches the filename of your Weather class
 from sqlalchemy import create_engine, Column, Float, Integer
 from sqlalchemy.orm import sessionmaker
@@ -56,21 +56,25 @@ def max_wind(wind):
     wind_2021= weather2021.wind_data()
     wind_2020= weather2020.wind_data()
     sum = wind_2024 + wind_2023 + wind_2022 + wind_2021 + wind_2020
-    avg = sum/len(wind)
-    min_temp = min(wind)
-    max_temp = max(wind)
+    avg_wind = sum/len(wind)
+    min_wind = min(wind)
+    max_wind = max(wind)
     return avg_wind, min_wind, max_wind
-def max_wind(precipitation):
+def sum_precip(precipitation):
     precipitation_2024= weather2024.precipitation_data()
     precipitation_2023= weather2023.precipitation_data()
     precipitation_2022= weather2022.precipitation_data()
     precipitation_2021= weather2021.precipitation_data()
     precipitation_2020= weather2020.precipitation_data()
     sum = precipitation_2024 + precipitation_2023 + precipitation_2022 + precipitation_2021 + precipitation_2020
-    avg = sum/len(wind)
-    min_temp = min(wind)
-    max_temp = max(wind)
-    return avg_wind, min_wind, max_wind
+    avg_precip= sum/len(precipitation)
+    min_precip = min(precipitation)
+    max_precip = max(precipitation)
+    return avg_precip, min_precip, max_precip
+
+temperatures = weather.temp_data()
+wind = weather.wind_data()
+precipitations = weather.precip_data
 
 weather2024 = Weather(38.8339, -104.8214, 9, 30, 2024)
 weather2023 = Weather(38.8339, -104.8214, 9, 30, 2023)
