@@ -49,13 +49,13 @@ def precip_sum(precipitation):
     return precipitation_sum
 
 
-# temperatures = [temperature_data2020, temperature_data2021, temperature_data2022, temperature_data2023, temperature_data2024]
-# wind = [wind_data2020, wind_data2021,wind_data2022,wind_data2023,wind_data2024]
-# precipitation = [pricip_data2020, pricip_data2021,pricip_data2022,pricip_data2023,pricip_data2024]
-#
-# print(avg_temp(temperatures))
-# print(max_wind(wind))
-# print(precip_sum(precipitation))
+temperatures = [temperature_data2020, temperature_data2021, temperature_data2022, temperature_data2023, temperature_data2024]
+wind = [wind_data2020, wind_data2021,wind_data2022,wind_data2023,wind_data2024]
+precipitation = [pricip_data2020, pricip_data2021,pricip_data2022,pricip_data2023,pricip_data2024]
+
+print(avg_temp(temperatures))
+print(max_wind(wind))
+print(precip_sum(precipitation))
 #
 # Base = sqlalchemy.orm.declarative_base()
 #
