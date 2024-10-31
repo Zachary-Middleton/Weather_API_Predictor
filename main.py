@@ -5,6 +5,7 @@ from sqlalchemy.orm import sessionmaker
 import sqlalchemy
 
 
+#methods to pull data from the Weather class for each year
 def avg_temp():
     temp_2024= weather2024.temp_data()
     temp_2023= weather2023.temp_data()
@@ -42,21 +43,22 @@ def sum_precip():
 
     return avg_precip, min_precip, max_precip, sum_precips, precipitation_2024, precipitation_2023, precipitation_2022, precipitation_2021, precipitation_2020
 
-
+#intializing the Weather class with each year with the latitude, longitude, day, month, and year
 weather2024 = Weather(38.8339, -104.8214, 9, 30, 2024)
 weather2023 = Weather(38.8339, -104.8214, 9, 30, 2023)
 weather2022 = Weather(38.8339, -104.8214, 9, 30, 2022)
 weather2021 = Weather(38.8339, -104.8214, 9, 30, 2021)
 weather2020 = Weather(38.8339, -104.8214, 9, 30, 2020)
 
-
+#initializing the variables from the methods above
 average_temperature, min_temp, max_temp, temp_2024, temp_2023, temp_2022, temp_2021,temp_2020 = avg_temp()
 average_wind, min_wind, maximum_wind, wind_2024, wind_2023, wind_2022, wind_2021, wind_2020 = max_wind()
 average_precip, min_precip, max_precip, sum_precips, precipitation_2024, precipitation_2023,precipitation_2022, precipitation_2021, precipitation_2020 = sum_precip()
 
-
+#base needed to start the SQLAlchemy process of creating a table
 Base = sqlalchemy.orm.declarative_base()
 
+#table created for database
 class WeatherData(Base):
     __tablename__ = 'weather_data'
     id = Column(Integer, primary_key=True)
@@ -98,6 +100,7 @@ class WeatherData(Base):
         return (f"{self.id} {self.latitude} {self.longitude} {self.month} {self.day} {self.year} {self.five_year_avg_temp} {self.five_year_min_temp} {self.five_year_max_temp} {self.five_year_avg_wind} {self.five_year_min_wind} {self.five_year_min_wind} {self.five_year_max_wind} {self.five_year_sum_precip} {self.five_year_min_precip} {self.five_year_max_precip}")
 
 
+#setting up DB type
 def setup_database(db_url='sqlite:///weather_data.db'):
     engine = create_engine(db_url)
     Base.metadata.create_all(engine)  # Create all tables in the engine
@@ -106,7 +109,7 @@ def setup_database(db_url='sqlite:///weather_data.db'):
 
 session = setup_database()
 
-
+#5 years of entry data
 entry_2024 = WeatherData(
     latitude=weather2024.latitude,
     longitude=weather2024.longitude,
@@ -187,10 +190,12 @@ entry_2020 = WeatherData(
     five_year_min_precip = precipitation_2020,
     five_year_max_precip = precipitation_2020
 )
+#once a variable for each entry year is created, session.add to database
 session.add(entry_2024)
 session.add(entry_2023)
 session.add(entry_2022)
 session.add(entry_2021)
 session.add(entry_2020)
 
+#last step to confirm data to be added to table
 session.commit()

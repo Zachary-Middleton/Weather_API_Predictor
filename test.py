@@ -21,7 +21,7 @@ class TestWeather(unittest.TestCase):
     def test_day(self):
         weather_day = Weather(38.8339, -104.8214, 9, 30, 2024)
 
-        # Assert that the longitude is set correctly
+        # Assert that the day is set correctly
         self.assertEqual(weather_day.day, 30)
 
 

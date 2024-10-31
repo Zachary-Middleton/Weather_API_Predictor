@@ -1,6 +1,6 @@
 import requests
 
-
+#custom class created with the following instance variables for my chosen location and date: Colorado Springs, Starting Date 09/30/2024
 class Weather:
     def __init__(self, latitude, longitude, month, day, year):
         self.latitude = latitude
@@ -18,7 +18,7 @@ class Weather:
         self.five_year_min_precip = None
         self.five_year_max_precip = None
 
-    # Define fetch_weather_data as part of the Weather class
+    # Define fetch_weather_data as part of the Weather class, using the weather API to pull necessary info
     def fetch_weather_data(self, year, month, day):
         url = "https://archive-api.open-meteo.com/v1/archive"
         date_str = f"{year}-{month:02d}-{day:02d}"
@@ -43,6 +43,7 @@ class Weather:
         else:
             print("Failed to retrieve data")
             return None
+    #methods to pull the temperature, wind, and precipitation data
     def temp_data(self):
         temperatures = []
         data = self.fetch_weather_data(self.year, self.month, self.day)
