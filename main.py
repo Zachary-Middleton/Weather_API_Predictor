@@ -123,74 +123,74 @@ entry_2024 = WeatherData(
     five_year_min_precip = precipitation_2024,
     five_year_max_precip = precipitation_2024
 )
-# entry_2023 = WeatherData(
-#     latitude=weather2023.latitude,
-#     longitude=weather2023.longitude,
-#     month=9,
-#     day = 30,
-#     year = 2023,
-#     five_year_avg_temp = average_temperature,
-#     five_year_min_temp =  min_temp,
-#     five_year_max_temp = max_temp,
-#     five_year_avg_wind = average_wind,
-#     five_year_min_wind = min_wind,
-#     five_year_max_wind = maximum_wind,
-#     five_year_sum_precip = sum_precips,
-#     five_year_min_precip = min_precip,
-#     five_year_max_precip = max_precip
-# )
-# entry_2022 = WeatherData(
-#     latitude=weather2022.latitude,
-#     longitude=weather2022.longitude,
-#     month=9,
-#     day = 30,
-#     year = 2022,
-#     five_year_avg_temp = average_temperature,
-#     five_year_min_temp =  min_temp,
-#     five_year_max_temp = max_temp,
-#     five_year_avg_wind = average_wind,
-#     five_year_min_wind = min_wind,
-#     five_year_max_wind = maximum_wind,
-#     five_year_sum_precip = sum_precips,
-#     five_year_min_precip = min_precip,
-#     five_year_max_precip = max_precip
-# )
-# entry_2021 = WeatherData(
-#     latitude=weather2021.latitude,
-#     longitude=weather2021.longitude,
-#     month=9,
-#     day = 30,
-#     year = 2021,
-#     five_year_avg_temp = average_temperature,
-#     five_year_min_temp =  min_temp,
-#     five_year_max_temp = max_temp,
-#     five_year_avg_wind = average_wind,
-#     five_year_min_wind = min_wind,
-#     five_year_max_wind = maximum_wind,
-#     five_year_sum_precip = sum_precips,
-#     five_year_min_precip = min_precip,
-#     five_year_max_precip = max_precip
-# )
-# entry_2020 = WeatherData(
-#     latitude=weather2020.latitude,
-#     longitude=weather2020.longitude,
-#     month=9,
-#     day = 30,
-#     year = 2020,
-#     five_year_avg_temp = average_temperature,
-#     five_year_min_temp =  min_temp,
-#     five_year_max_temp = max_temp,
-#     five_year_avg_wind = average_wind,
-#     five_year_min_wind = min_wind,
-#     five_year_max_wind = maximum_wind,
-#     five_year_sum_precip = sum_precips,
-#     five_year_min_precip = min_precip,
-#     five_year_max_precip = max_precip
-# )
+entry_2023 = WeatherData(
+    latitude=weather2023.latitude,
+    longitude=weather2023.longitude,
+    month=9,
+    day = 30,
+    year = 2023,
+    five_year_avg_temp = temp_2023,
+    five_year_min_temp =  temp_2023,
+    five_year_max_temp = temp_2023,
+    five_year_avg_wind = wind_2023,
+    five_year_min_wind = wind_2023,
+    five_year_max_wind = wind_2023,
+    five_year_sum_precip = precipitation_2023,
+    five_year_min_precip = precipitation_2023,
+    five_year_max_precip = precipitation_2023
+)
+entry_2022 = WeatherData(
+    latitude=weather2022.latitude,
+    longitude=weather2022.longitude,
+    month=9,
+    day = 30,
+    year = 2022,
+    five_year_avg_temp = temp_2022,
+    five_year_min_temp =  temp_2022,
+    five_year_max_temp = temp_2022,
+    five_year_avg_wind = wind_2022,
+    five_year_min_wind = wind_2022,
+    five_year_max_wind = wind_2022,
+    five_year_sum_precip = precipitation_2022,
+    five_year_min_precip = precipitation_2022,
+    five_year_max_precip = precipitation_2022
+)
+entry_2021 = WeatherData(
+    latitude=weather2021.latitude,
+    longitude=weather2021.longitude,
+    month=9,
+    day = 30,
+    year = 2021,
+    five_year_avg_temp = temp_2021,
+    five_year_min_temp =  temp_2021,
+    five_year_max_temp = temp_2021,
+    five_year_avg_wind = wind_2021,
+    five_year_min_wind = wind_2021,
+    five_year_max_wind = wind_2021,
+    five_year_sum_precip = precipitation_2021,
+    five_year_min_precip = precipitation_2021,
+    five_year_max_precip = precipitation_2021
+)
+entry_2020 = WeatherData(
+    latitude=weather2020.latitude,
+    longitude=weather2020.longitude,
+    month=9,
+    day = 30,
+    year = 2020,
+    five_year_avg_temp = temp_2020,
+    five_year_min_temp =  temp_2020,
+    five_year_max_temp = temp_2020,
+    five_year_avg_wind = wind_2020,
+    five_year_min_wind = wind_2020,
+    five_year_max_wind = wind_2020,
+    five_year_sum_precip = precipitation_2020,
+    five_year_min_precip = precipitation_2020,
+    five_year_max_precip = precipitation_2020
+)
 session.add(entry_2024)
-# session.add(entry_2023)
-# session.add(entry_2022)
-# session.add(entry_2021)
-# session.add(entry_2020)
+session.add(entry_2023)
+session.add(entry_2022)
+session.add(entry_2021)
+session.add(entry_2020)
 
 session.commit()
