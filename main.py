@@ -1,5 +1,5 @@
-import weather
-from weather import Weather  # Make sure this matches the filename of your Weather class
+
+from weather import Weather  # Has to match name of the file where custom Weather class was created
 from sqlalchemy import create_engine, Column, Float, Integer
 from sqlalchemy.orm import sessionmaker
 import sqlalchemy
@@ -191,11 +191,25 @@ entry_2020 = WeatherData(
     five_year_max_precip = precipitation_2020
 )
 #once a variable for each entry year is created, session.add to database
-session.add(entry_2024)
-session.add(entry_2023)
-session.add(entry_2022)
-session.add(entry_2021)
-session.add(entry_2020)
+# session.add(entry_2024)
+# session.add(entry_2023)
+# session.add(entry_2022)
+# session.add(entry_2021)
+# session.add(entry_2020)
+#
+# #last step to confirm data to be added to table
+# session.commit()
 
-#last step to confirm data to be added to table
-session.commit()
+#method to query database
+
+def query_database(session, latitude, longitude, month, day):
+    results = session.query(WeatherData).filter_by(
+        latitude=latitude, longitude=longitude, month=month, day= day).order_by(WeatherData.year.desc()).all()
+    for entry in results:
+        print(entry_2024,entry_2023,entry_2022,entry_2021,entry_2020)
+latitude = weather2024.latitude
+longitude = weather2024.longitude
+month = weather2024.month
+day = weather2024.day
+
+query_database(session, latitude, longitude, month, day)

@@ -1,0 +1,10 @@
+#Packages required for code to work
+
+from sqlalchemy import create_engine, Column, Float, Integer Version: 2.0.36
+from sqlalchemy.orm import sessionmaker Version: 2.0.36
+import sqlalchemy Version: 2.0.36
+import requests Version: 2.31.0
+import unittest
+from weather import Weather
+
+
